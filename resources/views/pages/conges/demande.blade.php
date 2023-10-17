@@ -237,7 +237,7 @@
             document.getElementById("date_fin_mod").min = date;
 
             $('#date_fin').change(function() {
-                @if (count($conges) > 0)
+                @if (count($conges) >= 0)
                     var dureeTotaleConges = 0;
 
                     @foreach ($conges as $conge)

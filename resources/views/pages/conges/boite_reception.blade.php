@@ -33,8 +33,8 @@
                                             <th>Date</th>
                                             <th>Heure de départ</th>
                                             <th>Heure d'arrivé</th>
-                                            <th>Décision</th>
                                             <th>Durée</th>
+                                            <th>Décision</th>
                                             <th class="text-center">Action</th>
                                         </tr>
                                     </thead>
@@ -47,7 +47,7 @@
                                                     <td>{{ $conge->type_conge }}</td>
                                                     <td>{{ date('d/m/Y', strtotime($conge->date_debut)) }}</td>
                                                     <td>{{ date('d/m/Y', strtotime($conge->date_fin)) }}</td>
-                                                    <td>{{ $conge->duree_conge }}</td>
+                                                    <td>{{ $conge->duree_conge }} jours</td>
                                                     <td>
                                                         @if ($conge->decision  == "En attente")
                                                             <span class="right badge badge-warning">{{ $conge->decision }}</span>

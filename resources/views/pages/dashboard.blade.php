@@ -176,12 +176,24 @@
     @endphp
 @endforeach
 
-@foreach ($congeType as $conge)
+@if (!empty($congeType))
     @php
-        $typeConge[] = $conge['type_conge'];
-        $nb_by_type[] = $conge['totalConge'];
+        $typeConge = [];
+        $nb_by_type = [];
     @endphp
-@endforeach
+
+    @foreach ($congeType as $conge)
+        @php
+            $typeConge[] = $conge['type_conge'];
+            $nb_by_type[] = $conge['totalConge'];
+        @endphp
+    @endforeach
+@else
+    @php
+        $typeConge = ['Aucun'];
+        $nb_by_type = [$congeType[0]];
+    @endphp
+@endif
 
 @push('page-script')
     <script src="{{ asset('dist/js/chart.min.js') }}"></script>

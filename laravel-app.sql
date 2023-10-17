@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : mar. 17 oct. 2023 à 04:21
+-- Généré le : mar. 17 oct. 2023 à 08:28
 -- Version du serveur : 8.0.31
 -- Version de PHP : 8.2.0
 
@@ -83,7 +83,14 @@ CREATE TABLE IF NOT EXISTS `conges` (
   PRIMARY KEY (`id`),
   KEY `conges_users_id_foreign` (`users_id`),
   KEY `conges_employees_id_foreign` (`employees_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci ROW_FORMAT=DYNAMIC;
+
+--
+-- Déchargement des données de la table `conges`
+--
+
+INSERT INTO `conges` (`id`, `users_id`, `employees_id`, `date_debut`, `date_fin`, `duree_conge`, `type_conge`, `motif`, `decision`, `created_at`, `updated_at`) VALUES
+(9, 12, 12, '2023-10-17', '2023-10-20', 3, 'Congé payé', 'yuyuyuyu', 'Accepter', '2023-10-17 05:23:25', '2023-10-17 05:27:49');
 
 -- --------------------------------------------------------
 
@@ -107,14 +114,15 @@ CREATE TABLE IF NOT EXISTS `contrats` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `contrats_employees_id_foreign` (`employees_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci ROW_FORMAT=DYNAMIC;
 
 --
 -- Déchargement des données de la table `contrats`
 --
 
 INSERT INTO `contrats` (`id`, `employees_id`, `num_contrat`, `type_contrat`, `date_debut`, `date_fin`, `salaire`, `jour_sem`, `heure_sem`, `horaire`, `created_at`, `updated_at`) VALUES
-(5, 1, '132432432543', 'CDI', '2023-10-04', NULL, 300000, 5, 40, '07:30 à 05:30', '2023-10-04 05:23:10', '2023-10-04 05:23:10');
+(5, 1, '132432432543', 'CDI', '2023-10-04', NULL, 300000, 5, 40, '07:30 à 05:30', '2023-10-04 05:23:10', '2023-10-04 05:23:10'),
+(12, 12, '3482868', 'CDI', '2023-10-11', NULL, 300000, 5, 48, '07:30 à 05:30', '2023-10-17 05:21:05', '2023-10-17 05:21:05');
 
 -- --------------------------------------------------------
 
@@ -184,14 +192,15 @@ CREATE TABLE IF NOT EXISTS `employees` (
   PRIMARY KEY (`id`),
   KEY `employees_services_id_foreign` (`services_id`),
   KEY `employees_professions_id_foreign` (`professions_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci ROW_FORMAT=DYNAMIC;
 
 --
 -- Déchargement des données de la table `employees`
 --
 
 INSERT INTO `employees` (`id`, `photo`, `immatriculation`, `nom`, `prenom`, `adresse`, `email`, `date_naiss`, `lieu_naiss`, `cin`, `sexe`, `situation_f`, `telephone`, `services_id`, `professions_id`, `created_at`, `updated_at`) VALUES
-(1, '1697516388.jpg', '2344325', 'RAKOTO', 'Nicolas Ibrahim', 'Andamasiny', 'nicolas.ibrahim@gmail.com', '1999-03-21', 'Toliara', '501234567890', 'Masculin', 'Célibataire', '0345678905', 2, 1, '0000-00-00 00:00:00', '2023-10-17 01:19:48');
+(1, '1697516388.jpg', '2344325', 'RAKOTO', 'Nicolas Ibrahim', 'Andamasiny', 'nicolas.ibrahim@gmail.com', '1999-03-21', 'Toliara', '501234567890', 'Masculin', 'Célibataire', '0345678905', 2, 1, '0000-00-00 00:00:00', '2023-10-17 01:19:48'),
+(12, '1697530865.jpeg', '73985998', 'RAKOTO', 'Fra', 'Tanambao', 'rakoto.fra@gmail.com', '1999-03-12', 'Toliara', '501439472843', 'Masculin', 'Célibataire', '0345671329', 2, 1, '2023-10-17 05:21:05', '2023-10-17 05:21:05');
 
 -- --------------------------------------------------------
 
@@ -468,14 +477,15 @@ CREATE TABLE IF NOT EXISTS `users` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email_unique` (`email`),
   KEY `users_employees_id_foreign` (`employees_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci ROW_FORMAT=DYNAMIC;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci ROW_FORMAT=DYNAMIC;
 
 --
 -- Déchargement des données de la table `users`
 --
 
 INSERT INTO `users` (`id`, `employees_id`, `name`, `email`, `password`, `email_verified_at`, `remember_token`, `created_at`, `updated_at`, `role`) VALUES
-(1, 1, 'Nicolas', 'nicolas.ibrahim@gmail.com', '$2y$10$VoqMaCodaj1isBEMOr.FMunJeg6QqX8G4mg/DY9bWIozPV4Xi7Mie', NULL, NULL, '2023-09-29 08:44:16', '2023-09-29 08:44:16', 1);
+(1, 1, 'Nicolas', 'nicolas.ibrahim@gmail.com', '$2y$10$VoqMaCodaj1isBEMOr.FMunJeg6QqX8G4mg/DY9bWIozPV4Xi7Mie', NULL, NULL, '2023-09-29 08:44:16', '2023-09-29 08:44:16', 1),
+(12, 12, 'Rakoto', 'rakoto.fra@gmail.com', '$2y$10$a5ie4ucWeiW2RMk6VnYG5.2CUE3WQZSHso7PvXXlIH1BBq80g2OOW', NULL, NULL, '2023-10-17 05:21:32', '2023-10-17 05:21:32', 0);
 
 --
 -- Contraintes pour les tables déchargées

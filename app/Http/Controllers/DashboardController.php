@@ -49,7 +49,7 @@ class DashboardController extends Controller
             }
         }
 
-        $data['congeType'] = Conge::select('type_conge', DB::raw('count(*) as totalConge'))
+        $data['congeType'] = Conge::where('decision', '=', 'Accepter')->select('type_conge', DB::raw('count(*) as totalConge'))
         ->groupBy('type_conge')
         ->get();
 

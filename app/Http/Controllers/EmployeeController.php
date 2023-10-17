@@ -109,15 +109,15 @@ class EmployeeController extends Controller
         $nom = $validation_data['nom'];
         $prenom = $validation_data['prenom'];
 
-        $existFullname = Employee::where('nom', $nom)->orWhere('prenom', $prenom)->first();
+        // $existFullname = Employee::where('nom', $nom)->orWhere('prenom', $prenom)->first();
         $existEmail = Employee::where('email', $nom)->orWhere('prenom', $prenom)->first();
 
-        if ($existFullname || $existEmail) {
+        if ($existEmail) {
             return response()->json(['message' => 'Ces nom et prénom déja existe'], 201);
         } else {
             $employees = new Employee();
             $employees -> immatriculation = $validation_data['immatriculation'];
-            $employees->photo = $imageName;
+            $employees -> photo = $imageName;
             $employees -> nom = $validation_data['nom'];
             $employees -> prenom = $validation_data['prenom'];
             $employees -> adresse = $validation_data['adresse'];

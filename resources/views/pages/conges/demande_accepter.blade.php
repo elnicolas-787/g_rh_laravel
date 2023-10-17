@@ -34,6 +34,7 @@
                                             <th>Type de congé</th>
                                             <th>Date de début</th>
                                             <th>Date de fin</th>
+                                            <th>Durée</th>
                                             <th>Motif</th>
                                         </tr>
                                     </thead>
@@ -47,6 +48,7 @@
                                                     <td>{{ $conge->type_conge }}</td>
                                                     <td>{{ date('d/m/Y', strtotime($conge->date_debut)) }}</td>
                                                     <td>{{ date('d/m/Y', strtotime($conge->date_fin)) }}</td>
+                                                    <td>{{ $conge->duree_conge }} jours</td>
                                                     <td>{{ $conge->motif }}</td>
                                                 </tr>
                                             @endforeach
